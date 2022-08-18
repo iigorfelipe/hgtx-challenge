@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 import UserController from '../controllers/UserController';
 
-const router = express.Router();
+const router = Router();
 
 // router.get('/', UserController.findAll);
 router.post('/cadastro', UserController.create);
