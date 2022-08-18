@@ -12,6 +12,8 @@ class UserModel extends Model {
 
   phone: number;
 
+  cpf: number;
+
   birthDate?: string;
 }
 
@@ -35,6 +37,10 @@ UserModel.init({
     type: DataTypes.STRING,
   },
   phone: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+  },
+  cpf: {
     allowNull: false,
     type: DataTypes.INTEGER,
   },
