@@ -1,7 +1,21 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import db from '../database/db';
 
-const UserModel = db.define('user', {
+class UserModel extends Model {
+  id: number;
+
+  name: string;
+
+  email: string;
+
+  password: string;
+
+  phone: number;
+
+  birthDate?: string;
+}
+
+UserModel.init({
   id: {
     autoIncrement: true,
     allowNull: false,
@@ -28,6 +42,9 @@ const UserModel = db.define('user', {
     allowNull: true,
     type: DataTypes.STRING,
   },
+}, {
+  modelName: 'user',
+  sequelize: db,
 });
 
 export default UserModel;
