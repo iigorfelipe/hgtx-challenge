@@ -3,9 +3,9 @@ import { IUser } from '../types/UserTypes';
 
 class UserService {
   create = async (obj: IUser): Promise<UserModel> => {
-    const user = await UserModel.create(obj);
+    const newUser = await UserModel.create(obj);
 
-    return user;
+    return newUser;
   };
 
   findAll = async (): Promise<UserModel[]> => {
