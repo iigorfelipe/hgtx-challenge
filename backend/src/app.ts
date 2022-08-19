@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { Express } from 'express';
 import router from './routes';
 import db from './database/db';
 
 class App {
-  public app: express.Express;
+  public app: Express;
 
   constructor() {
     this.app = express();
