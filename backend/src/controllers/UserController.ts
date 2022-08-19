@@ -35,6 +35,16 @@ class UserController {
 
     return updateUser;
   };
+
+  destroy = async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+
+    await this
+      .service
+      .destroy(id)
+      .then(() => res.status(200).json({ mensagem: 'Success' }))
+      .catch(() => res.status(400).json({ mensagem: 'Failed' }));
+  };
 }
 
 export default new UserController();
