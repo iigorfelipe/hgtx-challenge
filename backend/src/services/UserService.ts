@@ -13,6 +13,14 @@ class UserService {
 
     return users;
   };
+
+  update = async (id: string, obj: IUser): Promise<UserModel | Error > => {
+    const user = await UserModel.findOne({ where: { id } });
+
+    const updateUser = user ? await user.update({ obj }) : new Error();
+
+    return updateUser;
+  };
 }
 
 export default UserService;
