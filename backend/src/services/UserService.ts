@@ -14,10 +14,16 @@ class UserService {
     return users;
   };
 
-  update = async (id: string, obj: IUser): Promise<UserModel | Error > => {
+  findOne = async (id: string): Promise<UserModel | null> => {
     const user = await UserModel.findOne({ where: { id } });
 
-    const updateUser = user ? await user.update({ obj }) : new Error();
+    return user;
+  };
+
+  update = async (id: string, obj: IUser): Promise<UserModel | null > => {
+    const user = await UserModel.findOne({ where: { id } });
+
+    const updateUser = user ? await user.update({ obj }) : null;
 
     return updateUser;
   };
