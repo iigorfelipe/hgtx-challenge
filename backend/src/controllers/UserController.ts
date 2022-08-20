@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { hash } from 'bcrypt';
 import UserService from '../services/UserService';
 
 class UserController {
@@ -9,8 +10,10 @@ class UserController {
       name, email, password, phone, cpf, birthDate,
     } = req.body;
 
+    const encryptedPassword = await hash(password, 8);
+
     const obj = {
-      name, email, password, phone, cpf, birthDate,
+      name, email, password: encryptedPassword, phone, cpf, birthDate,
     };
 
     const newUser = await this.service.create(obj);
