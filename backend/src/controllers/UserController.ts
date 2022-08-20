@@ -5,45 +5,53 @@ class UserController {
   private service = new UserService();
 
   create = async (req: Request, res: Response): Promise<Response> => {
-    const newUser = await this
-      .service
-      .create(req.body)
-      .then(() => res.status(200).json({ mensagem: 'Success' }))
-      .catch(() => res.status(400).json({ mensagem: 'Failed' }));
+    const {
+      name, email, password, phone, cpf, birthDate,
+    } = req.body;
 
-    return newUser;
+    const obj = {
+      name, email, password, phone, cpf, birthDate,
+    };
+
+    const newUser = await this.service.create(obj);
+
+    return res.status(200).json(newUser);
   };
 
   findAll = async (_req: Request, res: Response): Promise<Response> => {
-    const users = await this
-      .service
-      .findAll()
-      .then(() => res.status(200).json({ mensagem: 'Success' }))
-      .catch(() => res.status(400).json({ mensagem: 'Failed' }));
+    const users = await this.service.findAll();
 
-    return users;
+    return res.status(200).json(users);
+  };
+
+  findOne = async (req: Request, res: Response): Promise<Response> => {
+    const { id } = req.params;
+
+    const users = await this.service.findOne(id);
+
+    return res.status(200).json(users);
   };
 
   update = async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
 
-    const updateUser = await this
-      .service
-      .update(id, req.body)
-      .then(() => res.status(200).json({ mensagem: 'Success' }))
-      .catch(() => res.status(400).json({ mensagem: 'Failed' }));
+    const {
+      name, email, password, phone, cpf, birthDate,
+    } = req.body;
 
-    return updateUser;
+    const obj = {
+      name, email, password, phone, cpf, birthDate,
+    };
+
+    const updateUser = await this.service.update(id, obj);
+
+    return res.status(200).json(updateUser);
   };
 
-  destroy = async (req: Request, res: Response): Promise<void> => {
+  destroy = async (req: Request): Promise<void> => {
     const { id } = req.params;
 
-    await this
-      .service
-      .destroy(id)
-      .then(() => res.status(200).json({ mensagem: 'Success' }))
-      .catch(() => res.status(400).json({ mensagem: 'Failed' }));
+    await this.service.destroy(id);
   };
 }
 
