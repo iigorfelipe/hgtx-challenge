@@ -1,23 +1,28 @@
 import { Router } from 'express';
-import UserController from '../controllers/UserController';
+import Authorization from '../token/Authorization';
 import UserMidlewares from '../middlewares/UserMidlewares';
+import UserController from '../controllers/UserController';
+import LoginMidleware from '../middlewares/LoginMidleware';
+import LoginController from '../controllers/LoginController';
 
 const router = Router();
 
 router.get(
   '/',
+  Authorization.authentication,
   UserMidlewares.findAll,
   UserController.findAll,
 );
 
 router.get(
   '/:id',
+  Authorization.authentication,
   UserMidlewares.findOne,
   UserController.findOne,
 );
 
 router.post(
-  '/cadastro',
+  '/register',
   UserMidlewares.create,
   UserController.create,
 );
@@ -30,12 +35,14 @@ router.post(
 
 router.put(
   '/:id',
+  Authorization.authentication,
   UserMidlewares.update,
   UserController.update,
 );
 
 router.delete(
   '/:id',
+  Authorization.authentication,
   UserMidlewares.findAll,
   UserController.destroy,
 );
