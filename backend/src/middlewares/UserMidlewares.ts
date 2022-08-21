@@ -4,13 +4,13 @@ import UserService from '../services/UserService';
 class UserMiddlewares {
   private service = new UserService();
 
-  create = async (req: Request, res: Response, next: NextFunction) => {
+  create = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const {
-      name,
-      email,
-      password,
-      phone,
-      cpf,
+      name, email, password, phone, cpf,
     } = req.body;
 
     if (!name) res.status(400).json({ message: '"name" is required' });
@@ -26,7 +26,11 @@ class UserMiddlewares {
     next();
   };
 
-  findAll = async (_req: Request, res: Response, next: NextFunction) => {
+  findAll = async (
+    _req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const users = await this.service.findAll();
 
     if (!users) res.status(400).json({ message: 'users not found' });
@@ -34,7 +38,11 @@ class UserMiddlewares {
     next();
   };
 
-  findOne = async (req: Request, res: Response, next: NextFunction) => {
+  findOne = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const { id } = req.params;
 
     const user = await this.service.findOne(id);
@@ -44,7 +52,11 @@ class UserMiddlewares {
     next();
   };
 
-  update = async (req: Request, res: Response, next: NextFunction) => {
+  update = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const { id } = req.params;
 
     const updateUser = await this.service.update(id, req.body);

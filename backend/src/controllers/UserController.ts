@@ -5,29 +5,36 @@ import UserService from '../services/UserService';
 class UserController {
   private service = new UserService();
 
-  create = async (req: Request, res: Response): Promise<Response> => {
+  create = async (
+    req: Request,
+    res: Response,
+  ): Promise<Response> => {
     const {
       name, email, password, phone, cpf, birthDate,
     } = req.body;
 
     const encryptedPassword = await hash(password, 8);
 
-    const obj = {
+    const newUser = await this.service.create({
       name, email, password: encryptedPassword, phone, cpf, birthDate,
-    };
-
-    const newUser = await this.service.create(obj);
+    });
 
     return res.status(200).json(newUser);
   };
 
-  findAll = async (_req: Request, res: Response): Promise<Response> => {
+  findAll = async (
+    _req: Request,
+    res: Response,
+  ): Promise<Response> => {
     const users = await this.service.findAll();
 
     return res.status(200).json(users);
   };
 
-  findOne = async (req: Request, res: Response): Promise<Response> => {
+  findOne = async (
+    req: Request,
+    res: Response,
+  ): Promise<Response> => {
     const { id } = req.params;
 
     const users = await this.service.findOne(id);
@@ -35,18 +42,19 @@ class UserController {
     return res.status(200).json(users);
   };
 
-  update = async (req: Request, res: Response): Promise<Response> => {
+  update = async (
+    req: Request,
+    res: Response,
+  ): Promise<Response> => {
     const { id } = req.params;
 
     const {
       name, email, password, phone, cpf, birthDate,
     } = req.body;
 
-    const obj = {
+    const updateUser = await this.service.update(id, {
       name, email, password, phone, cpf, birthDate,
-    };
-
-    const updateUser = await this.service.update(id, obj);
+    });
 
     return res.status(200).json(updateUser);
   };
