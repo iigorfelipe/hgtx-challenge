@@ -22,6 +22,12 @@ router.post(
   UserController.create,
 );
 
+router.post(
+  '/login',
+  LoginMidleware.login,
+  LoginController.login,
+);
+
 router.put(
   '/:id',
   UserMidlewares.update,
