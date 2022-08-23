@@ -1,4 +1,4 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, DateDataType, Model } from 'sequelize';
 import db from '../database/db';
 
 class UserModel extends Model {
@@ -15,6 +15,8 @@ class UserModel extends Model {
   cpf: number;
 
   birthDate?: string;
+
+  creationDate: DateDataType;
 }
 
 UserModel.init({
@@ -48,9 +50,15 @@ UserModel.init({
     allowNull: true,
     type: DataTypes.STRING,
   },
+  creationDate: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW,
+  },
 }, {
   modelName: 'user',
   sequelize: db,
+  timestamps: false,
 });
 
 export default UserModel;

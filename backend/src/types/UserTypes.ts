@@ -1,3 +1,5 @@
+import { DateDataType } from 'sequelize/types';
+
 export type IUser = {
   name: string;
   email: string;
@@ -5,4 +7,5 @@ export type IUser = {
   phone: number;
   cpf: number;
   birthDate?: string;
+  creationDate?: DateDataType;
 };
