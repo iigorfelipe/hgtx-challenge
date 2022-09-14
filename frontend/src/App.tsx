@@ -1,3 +1,5 @@
-const App = () => <>gomu gomu no...</>;
+const App = () => {
+  return <>Hello world</>;
+};
 
 export default App;
