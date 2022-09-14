@@ -2,7 +2,7 @@
 
 <p align="center">
   <i>
-    This is a repository used to store a technical challenge I received from hgtx.
+    This is a repository used to store a technical challenge I received from <a href="https://hightechx.com/">HGTX</a>.
   </i>
 </p>
 
@@ -11,31 +11,15 @@
   <img width="100%" src="https://octodex.github.com/images/manufacturetocat.png" />
 </div>
 
-<hr>
+### Backend
 
-##  About this project
-
-Full stack application in production, I will update the README as soon as I finish the project.
-
-<hr>
-
-# Frontend
-
-🔧  In Development 🔧 
-
-# Backend
-
-## Technologies
-
-<p>
-
-  <img width="58" src="https://nodejs.org/static/images/logos/nodejs-new-pantone-black.svg" alt="nodejs-logo"/>
-  <img width="58" src="https://www.codions.com/assets/img/technologies/express.png"/>
-  <img width="58" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="typescript-logo"/>
-
-</p>
-
-<hr>
+- TypeScript
+- Node.js
+- Express.js
+- jsonwebtoken
+- dotenv
+- Sequelize
+- mysql2
 
 ## Development Tools
 
@@ -47,39 +31,33 @@ Full stack application in production, I will update the README as soon as I fini
 
 </p>
 
-<hr>
+## Installation
 
-## Intalling
-
-- npm
-
-```
+```bash
 git clone git@github.com:iigorfelipe/hgtx-challenge.git
 ```
 
-```
-cd backend
+- ### Backend
+
+```bash
+cd hgtx-challenge/backend
 ```
 
-```
+```bash
 npm install
 ```
 
-<hr>
-
 ## Local Usage
 
-- npm
+- ### Backend
 
-```
-cd backend
+```bash
+cd hgtx-challenge/backend
 ```
 
-```
+```bash
 npm run dev
 ```
-
-<hr>
 
 ## References
 
@@ -88,7 +66,3 @@ npm run dev
 - [bcrypt - Docs](https://openbase.com/js/bcryptjs/documentation)
 
 - [jsonwebtoken - Docs](https://www.npmjs.com/package/jsonwebtoken)
-
-Api em breve, estou construindo a documentação dela
-
-
