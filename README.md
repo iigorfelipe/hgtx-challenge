@@ -11,6 +11,8 @@
   <img width="100%" src="https://octodex.github.com/images/manufacturetocat.png" />
 </div>
 
+## Technologies
+
 ### Backend
 
 - TypeScript
